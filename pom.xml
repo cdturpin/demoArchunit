@@ -6,7 +6,7 @@
 
 	<groupId>com.keyholesoftware.demo.archunit</groupId>
 	<artifactId>demoArchUnit</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>0.0.2-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
 	<name>demoArchUnit</name>
@@ -25,14 +25,14 @@
 		<java.version>1.8</java.version>
 		<junit.version>4.12</junit.version>
 		<archunit.version>0.8.2</archunit.version>
-		<maven.compiler.source>${java.version}</maven.compiler.source>
-		<maven.compiler.target>${java.version}</maven.compiler.target>
+		<!-- <basedir>./</basedir> -->
+		<!-- <softwareDistribution.home>C:/softwaredistribution</softwareDistribution.home> -->
+		<!-- <java.home.8>${softwareDistribution.home}\oracle\jdk1.8.0_162</java.home.8> -->
 	</properties>
-
 	<dependencies>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot</artifactId>
+			<artifactId>spring-boot-starter</artifactId>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -56,29 +56,17 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
-
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-devtools</artifactId>
-			<scope>runtime</scope>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-tomcat</artifactId>
-			<scope>provided</scope>
-		</dependency>
-		<dependency>
-			<groupId>org.apache.commons</groupId>
-			<artifactId>commons-lang3</artifactId>
-			<version>3.4</version>
-		</dependency>
+		<!-- <dependency> <groupId>org.apache.commons</groupId> <artifactId>commons-lang3</artifactId> 
+			<version>3.4</version> </dependency> -->
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-orm</artifactId>
+			<version>5.0.2.RELEASE</version>
 		</dependency>
 		<dependency>
 			<groupId>org.hibernate</groupId>
 			<artifactId>hibernate-core</artifactId>
+			<version>5.2.12.Final</version>
 		</dependency>
 		<dependency>
 			<groupId>org.hibernate</groupId>
@@ -102,11 +90,6 @@
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-test</artifactId>
-			<scope>test</scope>
 		</dependency>
 		<dependency>
 			<groupId>com.tngtech.archunit</groupId>
@@ -139,9 +122,22 @@
 			</exclusions>
 		</dependency>
 		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.tomcat</groupId>
+			<artifactId>tomcat-dbcp</artifactId>
+			<version>9.0.1</version>
+		</dependency>
+
+		<!-- <dependency> <groupId>org.springframework.boot</groupId> <artifactId>spring-boot-devtools</artifactId> 
+			<scope>runtime</scope> </dependency> -->
+		<dependency>
 			<groupId>org.apache.maven.plugins</groupId>
 			<artifactId>maven-compiler-plugin</artifactId>
 			<version>3.7.0</version>
+			<type>maven-plugin</type>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -156,30 +152,39 @@
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-compiler-plugin</artifactId>
-					<version>3.7.0</version>
+					<version>3.6.1</version>
 					<configuration>
-						<useIncrementalCompilation>false</useIncrementalCompilation>
 						<verbose>true</verbose>
 						<fork>true</fork>
 						<executable>${java.home.8}/bin/javac</executable>
 						<compilerVersion>${java.version}</compilerVersion>
+						<source>${java.version}</source>
+						<target>${java.version}</target>
+						<failOnError>false</failOnError>
+						<useIncrementalCompilation>false</useIncrementalCompilation>
+						<failOnWarning default-value="false">true</failOnWarning>
+						<meminitial>128m</meminitial>
+						<maxmem>512m</maxmem>
+						<optimize default-value="false">true</optimize>
+						<release>1.8</release>
+						<showDeprecation default-value="false">true</showDeprecation>
+						<showWarnings default-value="false">true</showWarnings>
+						<skipMultiThreadWarning
+							default-value="false">true</skipMultiThreadWarning>
+						<compilerArgs>
+							<arg>-verbose</arg>
+							<arg>-Xlint:all,-options,-path</arg>
+							<arg>-J-Duser.language=en_us</arg>
+						</compilerArgs>
 					</configuration>
-					<dependencies>
-						<dependency>
-							<groupId>org.ow2.asm</groupId>
-							<artifactId>asm</artifactId>
-							<version>6.2</version> <!-- Use newer version of ASM -->
-						</dependency>
-					</dependencies>
+					<!-- <dependencies> <dependency> <groupId>org.ow2.asm</groupId> <artifactId>asm</artifactId> 
+						<version>6.2</version> Use newer version of ASM </dependency> </dependencies> -->
 				</plugin>
 				<plugin>
 					<groupId>org.springframework.boot</groupId>
 					<artifactId>spring-boot-maven-plugin</artifactId>
 				</plugin>
-
 			</plugins>
 		</pluginManagement>
 	</build>
-
-
 </project>

@@ -8,30 +8,33 @@ import javax.persistence.Id;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import org.springframework.stereotype.Component;
+
+@Component
 @Embeddable
-@Table(name = "addresses", schema="northwind")
+@Table(name = "addresses", schema = "northwind")
 public class Address {
-    
+
     @Id
     @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.AUTO)
     Long addressId;
-    
+
     @Column(name = "address1")
-    String address1; 
-    
+    String address1;
+
     @Column(name = "address2")
-    String address2; 
-    
+    String address2;
+
     @Column(name = "city")
-    String city; 
-    
+    String city;
+
     @Column(name = "state")
-    String state; 
-    
+    String state;
+
     @Column(name = "postal_code")
-    Long postalCode; 
-    
+    Long postalCode;
+
     @Column(name = "country")
     String country;
 

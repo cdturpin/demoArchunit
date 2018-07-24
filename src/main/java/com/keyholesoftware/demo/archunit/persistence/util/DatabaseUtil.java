@@ -1,6 +1,5 @@
 package com.keyholesoftware.demo.archunit.persistence.util;
 
-
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -12,9 +11,9 @@ import javax.sql.DataSource;
  * Utility for database operations.
  */
 public class DatabaseUtil {
-    
+
     public static final String DDL_CREATE_SCHEMA = "CREATE SCHEMA IF NOT EXISTS %s";
-    
+
     private static final String DEFAULT_LANG = "tenant.defaultLang";
 
     /**
@@ -25,7 +24,7 @@ public class DatabaseUtil {
      */
     public static void createSchema(DataSource dataSource, String name) {
         try (Connection connection = dataSource.getConnection();
-             Statement statement = connection.createStatement()) {
+                Statement statement = connection.createStatement()) {
             statement.executeUpdate(String.format(DDL_CREATE_SCHEMA, name));
         } catch (SQLException e) {
             throw new RuntimeException("Can not connect to database", e);

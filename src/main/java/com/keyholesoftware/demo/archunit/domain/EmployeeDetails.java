@@ -5,23 +5,26 @@ import javax.persistence.Embeddable;
 import javax.persistence.Embedded;
 import javax.persistence.OneToOne;
 
+import org.springframework.stereotype.Component;
+
+@Component
 @Embeddable
 public class EmployeeDetails {
-    
+
     Address employeeAddress;
-    
+
     @Column(name = "email")
     String email;
-    
+
     @Column(name = "job_title")
     String jobTitle;
-    
+
     @Column(name = "department")
     String department;
-    
+
     @Column(name = "manager_id")
     Integer managerId;
-    
+
     @Column(name = "phone")
     Long phone;
 
@@ -33,7 +36,7 @@ public class EmployeeDetails {
     public void setEmployeeAddress(Address employeeAddress) {
         this.employeeAddress = employeeAddress;
     }
-    
+
     @OneToOne
     public String getAddress1() {
         return getEmployeeAddress().getAddress1();
@@ -87,7 +90,7 @@ public class EmployeeDetails {
     public void setCountry(String country) {
         getEmployeeAddress().setCountry(country);
     }
-    
+
     public String getEmail() {
         return email;
     }

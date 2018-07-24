@@ -9,45 +9,51 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import org.springframework.data.annotation.Id;
+import org.springframework.stereotype.Component;
 
+@Component
 @Entity
-@Table(name = "employees", schema="northwind")
+@Table(name = "employees", schema = "northwind")
 public class Employee extends DomainObject {
-    
+
+  
+  private static final long serialVersionUID = 1L;
+
     public Employee() {
         super();
         this.employeeId = super.getId();
     }
-    
+
     @Id
-    @Column(name = "id")
+    @Column(name = "employee_id")
+    @GeneratedValue(strategy = GenerationType.AUTO)
     Long employeeId;
-    
+
     @Column(name = "last_name")
     String lastName;
-    
+
     @Column(name = "first_name")
     String firstName;
-    
+
     @Column(name = "avatar")
     String avatar;
-    
+
     EmployeeDetails employeeDetails;
-    
+
     @Embedded
     public EmployeeDetails getEmployeeDetails() {
         return employeeDetails;
     }
-    
+
     public void setEmployeeDetails(EmployeeDetails employeeDetails) {
         this.employeeDetails = employeeDetails;
     }
-    
+
     @OneToOne
     public Address getEmployeeAddress() {
         return getEmployeeDetails().getEmployeeAddress();
     }
-    
+
     public void setEmployeeAddress(Address employeeAddress) {
         getEmployeeDetails().setEmployeeAddress(employeeAddress);
     }
@@ -104,6 +110,7 @@ public class Employee extends DomainObject {
     public void setEmployeeId(Long employeeId) {
         this.employeeId = employeeId;
     }
+
     public String getLastName() {
         return lastName;
     }
@@ -185,38 +192,7 @@ public class Employee extends DomainObject {
 }
 
 
-/* Table: orders 
-CREATE TABLE orders (
-  id              INT NOT NULL,
-  employee_id     INT ,
-  customer_id     INT ,
-  order_date      DATETIME ,
-  shipped_date    DATETIME ,
-  ship_name       VARCHAR(50) ,
-  ship_address1   VARCHAR(150) ,
-  ship_address2   VARCHAR(150) ,
-  ship_city       VARCHAR(50) ,
-  ship_state      VARCHAR(50) ,
-  ship_postal_code VARCHAR(50) ,
-  ship_country    VARCHAR(50) ,
-  shipping_fee    DECIMAL(19,4) NULL DEFAULT '0.0000',
-  payment_type    VARCHAR(50) ,
-  paid_date       DATETIME ,
-  order_status    VARCHAR(25),
-  PRIMARY KEY (id)
-);
 
-/* Table: order_details 
-CREATE TABLE order_details (
-  order_id            INT NOT NULL,
-  product_id          INT ,
-  quantity            DECIMAL(18,4) NOT NULL DEFAULT '0.0000',
-  unit_price          DECIMAL(19,4) NULL DEFAULT '0.0000',
-  discount            DOUBLE NOT NULL DEFAULT '0',
-  order_detail_status VARCHAR(25),
-  date_allocated      DATETIME ,
-  PRIMARY KEY (order_id, product_id)
-);
 
 /* Table: products 
 CREATE TABLE products (
