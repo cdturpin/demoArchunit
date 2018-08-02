@@ -25,43 +25,43 @@ public class CustomerService implements ServiceInterface<Customer, Long> {
 
   @Override
   public Collection<Customer> findAll() {
-    // TODO Auto-generated method stub
+
     return null;
   }
 
   @Override
   public List<Customer> findAll(Sort sort) {
-    // TODO Auto-generated method stub
+
     return null;
   }
 
   @Override
   public Page<Customer> findAll(Pageable pageable) {
-    // TODO Auto-generated method stub
+
     return null;
   }
 
   @Override
   public Optional<Customer> findById(Long primaryKey) {
-    // TODO Auto-generated method stub
+
     return null;
   }
 
   @Override
   public long count() {
-    // TODO Auto-generated method stub
+
     return 0;
   }
 
   @Override
   public void delete(Customer entity) {
-    // TODO Auto-generated method stub
+
     
   }
 
   @Override
   public boolean existsById(Long primaryKey) {
-    // TODO Auto-generated method stub
+
     return false;
   }
 

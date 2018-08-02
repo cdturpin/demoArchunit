@@ -3,6 +3,8 @@ package com.keyholesoftware.demo.archunit.persistence.repository;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 
+import java.util.Optional;
+
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,10 +30,10 @@ public class DomainObjectRepositoryTest {
     public void givenAnyDomainObjectRepository_whenSaveAndRetreiveEntity_thenOK() {
 
         DomainObject domainObject = doRepo.save(new DomainObject(123456L));
-        DomainObject foundEntity = doRepo.findOne(domainObject.getId());
+        Optional<DomainObject> foundEntity = doRepo.findById(domainObject.getId());
 
         assertNotNull(foundEntity);
-        assertEquals(domainObject.getId(), foundEntity.getId());
+        assertEquals(domainObject.getId(), foundEntity.get());
        
     }
 

@@ -17,13 +17,10 @@ public interface DomainObjectRepository<T extends DomainObject, ID> extends JpaR
   List<T> findAll(Sort sort);
   Page<T> findAll(Pageable pageable);
   
-  Optional<T> findById(ID primaryKey); 
-
   List<T> findAll();               
 
   long count();                        
 
   void delete(T entity);               
 
-  boolean existsById(ID primaryKey);
 }
