@@ -11,6 +11,8 @@ import javax.persistence.Table;
 @Table(name= "customers", schema="northwind")
 public class Customer extends DomainObject {
     
+  private static final long serialVersionUID = 1L;
+
     public Customer() {
         super();
     }

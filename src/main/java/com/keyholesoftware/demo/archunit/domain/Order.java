@@ -8,6 +8,7 @@ import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
@@ -57,7 +58,7 @@ public class Order extends DomainObject {
     
     @OneToMany(mappedBy="orders")
     Set<OrderDetail> orderDetailLine;
-
+    @OneToOne
     public Long getOrderId() {
         return orderId;
     }
@@ -65,7 +66,7 @@ public class Order extends DomainObject {
     public void setOrderId(Long orderId) {
         this.orderId = orderId;
     }
-
+    @OneToOne
     public Integer getEmployeeId() {
         return employeeId;
     }
@@ -73,7 +74,7 @@ public class Order extends DomainObject {
     public void setEmployeeId(Integer employeeId) {
         this.employeeId = employeeId;
     }
-
+    @OneToOne
     public Long getCustomerId() {
         return customerId;
     }
@@ -90,7 +91,7 @@ public class Order extends DomainObject {
     public void setOrderDate(Date orderDate) {
         this.orderDate = orderDate;
     }
-
+    @OneToOne
     public Date getShippedDate() {
         return shippedDate;
     }
@@ -98,7 +99,7 @@ public class Order extends DomainObject {
     public void setShippedDate(Date shippedDate) {
         this.shippedDate = shippedDate;
     }
-
+    @OneToOne
     public String getShipName() {
         return shipName;
     }
@@ -106,7 +107,7 @@ public class Order extends DomainObject {
     public void setShipName(String shipName) {
         this.shipName = shipName;
     }
-
+    @ManyToOne
     public Double getShippingFee() {
         return shippingFee;
     }
@@ -114,7 +115,7 @@ public class Order extends DomainObject {
     public void setShippingFee(Double shippingFee) {
         this.shippingFee = shippingFee;
     }
-
+    @OneToOne
     public String getPaymentType() {
         return paymentType;
     }
@@ -122,7 +123,7 @@ public class Order extends DomainObject {
     public void setPaymentType(String paymentType) {
         this.paymentType = paymentType;
     }
-
+    @OneToOne
     public Date getPaidDate() {
         return paidDate;
     }
@@ -130,7 +131,7 @@ public class Order extends DomainObject {
     public void setPaidDate(Date paidDate) {
         this.paidDate = paidDate;
     }
-
+    @OneToOne
     public String getOrderStatus() {
         return orderStatus;
     }
@@ -138,7 +139,7 @@ public class Order extends DomainObject {
     public void setOrderStatus(String orderStatus) {
         this.orderStatus = orderStatus;
     }
-
+    @ManyToOne
     public Set<OrderDetail> getOrderDetailLine() {
         return orderDetailLine;
     }
@@ -156,7 +157,7 @@ public class Order extends DomainObject {
     public void setShipAddress(Address shipAddress) {
         this.shipAddress = shipAddress;
     }
-    
+    @OneToOne
     @Column(name = "ship_address1")
     public String getShipAddress1() {
         return getShipAddress().getAddress1();
@@ -165,7 +166,7 @@ public class Order extends DomainObject {
     public void setAddress1(String address1) {
         getShipAddress().setAddress1(address1);
     }
-
+    @OneToOne
     @Column(name = "ship_address2")
     public String getAddress2() {
         return getShipAddress().getAddress2();
@@ -174,7 +175,7 @@ public class Order extends DomainObject {
     public void setAddress2(String address2) {
         getShipAddress().setAddress2(address2);
     }
-
+    @OneToOne
     @Column(name = "ship_city")
     public String getCity() {
         return getShipAddress().getCity();
@@ -183,7 +184,7 @@ public class Order extends DomainObject {
     public void setCity(String city) {
         getShipAddress().setCity(city);
     }
-
+    @OneToOne
     @Column(name = "ship_state")
     public String getState() {
         return getShipAddress().getState();
@@ -192,7 +193,7 @@ public class Order extends DomainObject {
     public void setState(String state) {
         getShipAddress().setState(state);
     }
-
+    @OneToOne
     @Column(name = "ship_postal_code")
     public Long getPostalCode() {
         return getShipAddress().getPostalCode();
@@ -201,7 +202,7 @@ public class Order extends DomainObject {
     public void setPostalCode(Long postalCode) {
         getShipAddress().setPostalCode(postalCode);
     }
-
+    @OneToOne
     @Column(name = "ship_country")
     public String getCountry() {
         return getShipAddress().getCountry();

@@ -1,19 +1,29 @@
 package com.keyholesoftware.demo.archunit.persistence.repository;
 
 import java.util.List;
+import java.util.Optional;
 
-import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.repository.NoRepositoryBean;
 
 import com.keyholesoftware.demo.archunit.domain.DomainObject;
 
-public interface DomainObjectRepository<T extends DomainObject> extends CrudRepository<T, Long> {
+@NoRepositoryBean
+public interface DomainObjectRepository<T extends DomainObject, ID> extends JpaRepository<T, Long> {
+  
+  List<T> findAll(Sort sort);
+  Page<T> findAll(Pageable pageable);
+  
+  Optional<T> findById(ID primaryKey); 
 
-    <S extends T> S save(DomainObject entity);
-    
-    <S extends T> List<S> save(Iterable<S> entities);
-    
-    T findOne(Long id);
-    
-    void delete(T t);
+  List<T> findAll();               
 
+  long count();                        
+
+  void delete(T entity);               
+
+  boolean existsById(ID primaryKey);
 }

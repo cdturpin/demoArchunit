@@ -102,7 +102,7 @@ public class Employee extends DomainObject {
     public void setEmployeePhone(Long phone) {
         getEmployeeDetails().setPhone(phone);
     }
-
+    @OneToOne
     public Long getEmployeeId() {
         return employeeId;
     }
@@ -110,7 +110,7 @@ public class Employee extends DomainObject {
     public void setEmployeeId(Long employeeId) {
         this.employeeId = employeeId;
     }
-
+    @OneToOne
     public String getLastName() {
         return lastName;
     }
@@ -118,7 +118,7 @@ public class Employee extends DomainObject {
     public void setLastName(String lastName) {
         this.lastName = lastName;
     }
-
+    @OneToOne
     public String getFirstName() {
         return firstName;
     }
@@ -126,7 +126,7 @@ public class Employee extends DomainObject {
     public void setFirstName(String firstName) {
         this.firstName = firstName;
     }
-
+    @OneToOne
     public String getAvatar() {
         return avatar;
     }
@@ -134,7 +134,7 @@ public class Employee extends DomainObject {
     public void setAvatar(String avatar) {
         this.avatar = avatar;
     }
-
+    @OneToOne
     @Column(name = "address1")
     public String getAddress1() {
         return getEmployeeDetails().getAddress1();
@@ -143,7 +143,7 @@ public class Employee extends DomainObject {
     public void setAddress1(String address1) {
         getEmployeeDetails().setAddress1(address1);
     }
-
+    @OneToOne
     @Column(name = "address2")
     public String getAddress2() {
         return getEmployeeDetails().getAddress2();
@@ -152,7 +152,7 @@ public class Employee extends DomainObject {
     public void setAddress2(String address2) {
         getEmployeeDetails().setAddress2(address2);
     }
-
+    @OneToOne
     @Column(name = "city")
     public String getCity() {
         return getEmployeeDetails().getCity();
@@ -161,7 +161,7 @@ public class Employee extends DomainObject {
     public void setCity(String city) {
         getEmployeeDetails().setCity(city);
     }
-
+    @OneToOne
     @Column(name = "state")
     public String getState() {
         return getEmployeeDetails().getState();
@@ -170,7 +170,7 @@ public class Employee extends DomainObject {
     public void setState(String state) {
         getEmployeeDetails().setState(state);
     }
-
+    @OneToOne
     @Column(name = "postal_code")
     public Long getPostalCode() {
         return getEmployeeDetails().getPostalCode();
@@ -179,7 +179,7 @@ public class Employee extends DomainObject {
     public void setPostalCode(Long postalCode) {
         getEmployeeDetails().setPostalCode(postalCode);
     }
-
+    @OneToOne
     @Column(name = "country")
     public String getCountry() {
         return getEmployeeDetails().getCountry();
